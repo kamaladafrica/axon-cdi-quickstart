@@ -13,6 +13,10 @@ public class Quickstart {
 	@Inject
 	CommandGateway gateway;
 
+	@Inject
+	@Qualified
+	CommandGateway qualifiedGateway;
+
 	public void run() throws InterruptedException {
 		String todoId1 = "ToDoItem(" + UUID.randomUUID().toString() + ")";
 		String todoId2 = "ToDoItem(" + UUID.randomUUID().toString() + ")";
@@ -26,6 +30,16 @@ public class Quickstart {
 		Thread.sleep(3000);
 		gateway.sendAndWait(new MarkCompletedCommand(todoId2));
 		gateway.sendAndWait(new MarkCompletedCommand(todoId3));
-	}
+
+		qualifiedGateway.sendAndWait(new CreateToDoItemCommand(todoId1, "A dummy todo item 1"));
+		qualifiedGateway.sendAndWait(new CreateToDoItemCommand(todoId2, "A dummy todo item 2"));
+		qualifiedGateway.sendAndWait(new CreateToDoItemCommand(todoId3, "A dummy todo item 3"));
+
+		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId1));
+
+		Thread.sleep(3000);
+		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId2));
+		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId3));
+}
 
 }

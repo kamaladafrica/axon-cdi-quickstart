@@ -12,10 +12,13 @@ public class Main {
 		try {
 			container.boot();
 
-			CDI.current().select(Quickstart.class).get().run();
-
+			Quickstart quickstart = CDI.current().select(Quickstart.class).get();
+			quickstart.run();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			container.shutdown();
+			System.out.println("Shutting down...");
 			System.exit(0);
 		}
 	}

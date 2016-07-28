@@ -26,13 +26,14 @@ import org.axonframework.saga.SagaRepository;
 import org.axonframework.saga.repository.inmemory.InMemorySagaRepository;
 
 @ApplicationScoped
-public class AxonConfiguration {
+public class AxonQualifiedConfiguration {
 
-	private static final File storageDir = new File("./events");
+	private static final File storageDir = new File("./qualified-events");
 
 	@Produces
 	@AutoConfigure
 	@ApplicationScoped
+	@Qualified
 	public EventBus eventBus() {
 		return new SimpleEventBus();
 	}
@@ -40,6 +41,7 @@ public class AxonConfiguration {
 	@Produces
 	@AutoConfigure
 	@ApplicationScoped
+	@Qualified
 	public SnapshotEventStore eventStore() {
 		System.out.println("Storage path: " + storageDir.getAbsolutePath());
 		return new FileSystemEventStore(new SimpleEventFileResolver(storageDir));
@@ -47,13 +49,15 @@ public class AxonConfiguration {
 
 	@Produces
 	@ApplicationScoped
-	public EventScheduler eventScheduler(EventBus eventBus) {
+	@Qualified
+	public EventScheduler eventScheduler(@Qualified EventBus eventBus) {
 		return new SimpleEventScheduler(Executors.newSingleThreadScheduledExecutor(), eventBus);
 	}
 
 	@Produces
 	@AutoConfigure
 	@ApplicationScoped
+	@Qualified
 	public SagaRepository sagaRepository() {
 		return new InMemorySagaRepository();
 	}
@@ -61,13 +65,15 @@ public class AxonConfiguration {
 	@Produces
 	@AutoConfigure
 	@ApplicationScoped
+	@Qualified
 	public CommandBus commandBus() {
 		return new SimpleCommandBus();
 	}
 
 	@Produces
 	@ApplicationScoped
-	public CommandGateway commandGateway(CommandBus commandBus) {
+	@Qualified
+	public CommandGateway commandGateway(@Qualified CommandBus commandBus) {
 		return new DefaultCommandGateway(commandBus);
 	}
 
@@ -76,7 +82,8 @@ public class AxonConfiguration {
 	@Produces
 	@AutoConfigure
 	@ApplicationScoped
-	public Snapshotter snapshotter(SnapshotEventStore eventStore) {
+	@Qualified
+	public Snapshotter snapshotter(@Qualified SnapshotEventStore eventStore) {
 		AggregateSnapshotter snapshotter = new AggregateSnapshotter();
 		snapshotter.setEventStore(eventStore);
 		return snapshotter;
@@ -84,7 +91,8 @@ public class AxonConfiguration {
 
 	@Produces
 	@ApplicationScoped
-	public SnapshotterTrigger snapshotterTrigger(Snapshotter snapshotter) {
+	@Qualified
+	public SnapshotterTrigger snapshotterTrigger(@Qualified Snapshotter snapshotter) {
 		EventCountSnapshotterTrigger trigger = new EventCountSnapshotterTrigger();
 		trigger.setSnapshotter(snapshotter);
 		return trigger;

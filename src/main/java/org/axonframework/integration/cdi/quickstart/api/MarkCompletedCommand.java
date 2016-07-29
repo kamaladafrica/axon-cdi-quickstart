@@ -1,12 +1,9 @@
 /*
  * Copyright (c) 2010-2014. Axon Framework
- *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,6 +13,7 @@
 
 package org.axonframework.integration.cdi.quickstart.api;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 
 /**
@@ -25,14 +23,19 @@ import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
  */
 public class MarkCompletedCommand {
 
-    @TargetAggregateIdentifier
-    private final String todoId;
+	@TargetAggregateIdentifier
+	private final String todoId;
 
-    public MarkCompletedCommand(String todoId) {
-        this.todoId = todoId;
-    }
+	public MarkCompletedCommand(String todoId) {
+		this.todoId = todoId;
+	}
 
-    public String getTodoId() {
-        return todoId;
-    }
+	public String getTodoId() {
+		return todoId;
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
 }

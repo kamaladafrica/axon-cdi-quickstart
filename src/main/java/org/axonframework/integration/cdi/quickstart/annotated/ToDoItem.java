@@ -23,15 +23,20 @@ public class ToDoItem extends AbstractAnnotatedAggregateRoot<String> {
 
 	@CommandHandler
 	public ToDoItem(CreateToDoItemCommand command) {
-		apply(new ToDoItemCreatedEvent(command.getTodoId(), command.getDescription()));
+		ToDoItemCreatedEvent event = new ToDoItemCreatedEvent(command.getTodoId(), command.getDescription());
+		System.out.println("<< Applying event: " + event);
+		apply(event);
 	}
 
 	public void markCompleted() {
-		apply(new ToDoItemCompletedEvent(id));
+		ToDoItemCompletedEvent event = new ToDoItemCompletedEvent(id);
+		System.out.println("<< Applying event: " + event);
+		apply(event);
 	}
 
 	@EventSourcingHandler
 	public void on(ToDoItemCreatedEvent event) {
+		System.out.println(">> Receiving aggregate event: " + event);
 		this.id = event.getTodoId();
 	}
 }

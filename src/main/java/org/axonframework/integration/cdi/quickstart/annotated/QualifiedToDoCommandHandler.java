@@ -16,6 +16,7 @@ package org.axonframework.integration.cdi.quickstart.annotated;
 import javax.inject.Inject;
 
 import org.axonframework.commandhandling.annotation.CommandHandler;
+import org.axonframework.integration.cdi.quickstart.Qualified;
 import org.axonframework.integration.cdi.quickstart.api.MarkCompletedCommand;
 import org.axonframework.integration.cdi.quickstart.api.MarkToDoItemOverdueCommand;
 import org.axonframework.repository.Repository;
@@ -23,22 +24,24 @@ import org.axonframework.repository.Repository;
 /**
  * @author Jettro Coenradie
  */
-public class ToDoCommandHandler {
+@Qualified
+public class QualifiedToDoCommandHandler {
 
 	@Inject
-	private Repository<ToDoItem> repository;
+	@Qualified
+	private Repository<QualifiedToDoItem> repository;
 
 	@CommandHandler
 	public void handle(MarkCompletedCommand command) {
 		System.out.println(">> Receiving command: " + command);
-		ToDoItem toDoItem = repository.load(command.getTodoId());
+		QualifiedToDoItem toDoItem = repository.load(command.getTodoId());
 		toDoItem.markCompleted();
 	}
 
 	@CommandHandler
 	public void handle(MarkToDoItemOverdueCommand command) {
 		System.out.println(">> Receiving command: " + command);
-		System.out.println(String.format("Got command to mark [%s] overdue!",
+		System.out.println(String.format("Got command to mark qualified [%s] overdue!",
 				command.getTodoId()));
 	}
 }

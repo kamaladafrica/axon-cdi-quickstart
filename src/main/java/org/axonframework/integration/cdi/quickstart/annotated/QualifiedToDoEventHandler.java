@@ -15,6 +15,7 @@ package org.axonframework.integration.cdi.quickstart.annotated;
 
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventhandling.annotation.Timestamp;
+import org.axonframework.integration.cdi.quickstart.Qualified;
 import org.axonframework.integration.cdi.quickstart.api.ToDoItemCompletedEvent;
 import org.axonframework.integration.cdi.quickstart.api.ToDoItemCreatedEvent;
 import org.joda.time.DateTime;
@@ -24,12 +25,13 @@ import org.joda.time.DateTime;
  *
  * @author Jettro Coenradie
  */
-public class ToDoEventHandler {
+@Qualified
+public class QualifiedToDoEventHandler {
 
 	@EventHandler
 	public void handle(ToDoItemCreatedEvent event, @Timestamp DateTime time) {
 		System.out.println(">> Receiving event: " + event);
-		System.out.println(String.format("We've got something to do: %s (%s, created at %s)",
+		System.out.println(String.format("We've got something qualified to do: %s (%s, created at %s)",
 				event.getDescription(),
 				event.getTodoId(),
 				time.toString("d-M-y H:m")));
@@ -38,6 +40,6 @@ public class ToDoEventHandler {
 	@EventHandler
 	public void handle(ToDoItemCompletedEvent event) {
 		System.out.println(">> Receiving event: " + event);
-		System.out.println(String.format("We've completed the task with id %s", event.getTodoId()));
+		System.out.println(String.format("We've completed the qualified task with id %s", event.getTodoId()));
 	}
 }

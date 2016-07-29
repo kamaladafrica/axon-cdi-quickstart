@@ -31,15 +31,19 @@ public class Quickstart {
 		gateway.sendAndWait(new MarkCompletedCommand(todoId2));
 		gateway.sendAndWait(new MarkCompletedCommand(todoId3));
 
-		qualifiedGateway.sendAndWait(new CreateToDoItemCommand(todoId1, "A dummy todo item 1"));
-		qualifiedGateway.sendAndWait(new CreateToDoItemCommand(todoId2, "A dummy todo item 2"));
-		qualifiedGateway.sendAndWait(new CreateToDoItemCommand(todoId3, "A dummy todo item 3"));
+		String todoId4 = "QualifiedToDoItem(" + UUID.randomUUID().toString() + ")";
+		String todoId5 = "QualifiedToDoItem(" + UUID.randomUUID().toString() + ")";
+		String todoId6 = "QualifiedToDoItem(" + UUID.randomUUID().toString() + ")";
 
-		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId1));
+		qualifiedGateway.sendAndWait(new CreateToDoItemCommand(todoId4, "A dummy todo item 1"));
+		qualifiedGateway.sendAndWait(new CreateToDoItemCommand(todoId5, "A dummy todo item 2"));
+		qualifiedGateway.sendAndWait(new CreateToDoItemCommand(todoId6, "A dummy todo item 3"));
+
+		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId4));
 
 		Thread.sleep(3000);
-		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId2));
-		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId3));
+		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId5));
+		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId6));
 }
 
 }

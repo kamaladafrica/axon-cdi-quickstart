@@ -4,8 +4,7 @@ import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 import org.axonframework.eventsourcing.annotation.EventSourcingHandler;
-import org.axonframework.integration.cdi.AggregateConfiguration;
-import org.axonframework.integration.cdi.quickstart.QualifiedDef;
+import org.axonframework.integration.cdi.quickstart.QualifiedConfiguration;
 import org.axonframework.integration.cdi.quickstart.api.CreateToDoItemCommand;
 import org.axonframework.integration.cdi.quickstart.api.ToDoItemCompletedEvent;
 import org.axonframework.integration.cdi.quickstart.api.ToDoItemCreatedEvent;
@@ -13,7 +12,7 @@ import org.axonframework.integration.cdi.quickstart.api.ToDoItemCreatedEvent;
 /**
  * @author Jettro Coenradie
  */
-@AggregateConfiguration(QualifiedDef.class)
+@QualifiedConfiguration
 public class QualifiedToDoItem extends AbstractAnnotatedAggregateRoot<String> {
 
 	private static final long serialVersionUID = 1L;

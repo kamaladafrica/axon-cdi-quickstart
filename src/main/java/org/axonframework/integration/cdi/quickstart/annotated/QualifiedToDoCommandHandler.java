@@ -44,4 +44,5 @@ public class QualifiedToDoCommandHandler {
 		System.out.println(String.format("Got command to mark qualified [%s] overdue!",
 				command.getTodoId()));
 	}
+
 }

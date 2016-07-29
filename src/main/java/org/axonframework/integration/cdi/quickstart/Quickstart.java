@@ -44,6 +44,6 @@ public class Quickstart {
 		Thread.sleep(3000);
 		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId5));
 		qualifiedGateway.sendAndWait(new MarkCompletedCommand(todoId6));
-}
+	}
 
 }

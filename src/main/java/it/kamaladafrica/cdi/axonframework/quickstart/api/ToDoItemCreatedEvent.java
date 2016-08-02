@@ -11,24 +11,20 @@
  * limitations under the License.
  */
 
-package org.axonframework.integration.cdi.quickstart.api;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
+package it.kamaladafrica.cdi.axonframework.quickstart.api;
 
 /**
- * Command used to create a new ToDoItem
+ * A new ToDoItem is created
  *
  * @author Jettro Coenradie
  */
-public class CreateToDoItemCommand {
+public class ToDoItemCreatedEvent {
 
-	@TargetAggregateIdentifier
 	private final String todoId;
 
 	private final String description;
 
-	public CreateToDoItemCommand(String todoId, String description) {
+	public ToDoItemCreatedEvent(String todoId, String description) {
 		this.todoId = todoId;
 		this.description = description;
 	}
@@ -43,6 +39,6 @@ public class CreateToDoItemCommand {
 
 	@Override
 	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
+		return "ToDoItemCreatedEvent(" + todoId + ", '" + description + "')";
 	}
 }

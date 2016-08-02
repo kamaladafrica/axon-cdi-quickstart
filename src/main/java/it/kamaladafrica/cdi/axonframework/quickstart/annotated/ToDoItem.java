@@ -1,12 +1,13 @@
-package org.axonframework.integration.cdi.quickstart.annotated;
+package it.kamaladafrica.cdi.axonframework.quickstart.annotated;
 
 import org.axonframework.commandhandling.annotation.CommandHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 import org.axonframework.eventsourcing.annotation.EventSourcingHandler;
-import org.axonframework.integration.cdi.quickstart.api.CreateToDoItemCommand;
-import org.axonframework.integration.cdi.quickstart.api.ToDoItemCompletedEvent;
-import org.axonframework.integration.cdi.quickstart.api.ToDoItemCreatedEvent;
+
+import it.kamaladafrica.cdi.axonframework.quickstart.api.CreateToDoItemCommand;
+import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCompletedEvent;
+import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCreatedEvent;
 
 /**
  * @author Jettro Coenradie

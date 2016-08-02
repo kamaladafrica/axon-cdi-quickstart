@@ -11,22 +11,23 @@
  * limitations under the License.
  */
 
-package org.axonframework.integration.cdi.quickstart.saga;
+package it.kamaladafrica.cdi.axonframework.quickstart.saga;
 
 import javax.inject.Inject;
 
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.eventhandling.scheduling.EventScheduler;
 import org.axonframework.eventhandling.scheduling.ScheduleToken;
-import org.axonframework.integration.cdi.quickstart.api.MarkToDoItemOverdueCommand;
-import org.axonframework.integration.cdi.quickstart.api.ToDoItemCompletedEvent;
-import org.axonframework.integration.cdi.quickstart.api.ToDoItemCreatedEvent;
-import org.axonframework.integration.cdi.quickstart.api.ToDoItemDeadlineExpiredEvent;
 import org.axonframework.saga.annotation.AbstractAnnotatedSaga;
 import org.axonframework.saga.annotation.EndSaga;
 import org.axonframework.saga.annotation.SagaEventHandler;
 import org.axonframework.saga.annotation.StartSaga;
 import org.joda.time.Duration;
+
+import it.kamaladafrica.cdi.axonframework.quickstart.api.MarkToDoItemOverdueCommand;
+import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCompletedEvent;
+import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCreatedEvent;
+import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemDeadlineExpiredEvent;
 
 /**
  * @author Allard Buijze

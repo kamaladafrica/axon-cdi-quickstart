@@ -11,22 +11,20 @@
  * limitations under the License.
  */
 
-package org.axonframework.integration.cdi.quickstart.api;
+package it.kamaladafrica.cdi.axonframework.quickstart.api;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 
 /**
- * Command used to mark an existing ToDoItem as completed.
- *
- * @author Jettro Coenradie
+ * @author Allard Buijze
  */
-public class MarkCompletedCommand {
+public class MarkToDoItemOverdueCommand {
 
 	@TargetAggregateIdentifier
 	private final String todoId;
 
-	public MarkCompletedCommand(String todoId) {
+	public MarkToDoItemOverdueCommand(String todoId) {
 		this.todoId = todoId;
 	}
 

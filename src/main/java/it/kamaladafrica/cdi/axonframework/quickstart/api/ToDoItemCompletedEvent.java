@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package org.axonframework.integration.cdi.quickstart.api;
+package it.kamaladafrica.cdi.axonframework.quickstart.api;
 
 /**
  * The ToDoItem belonging to the provided aggregate identifier is completed.

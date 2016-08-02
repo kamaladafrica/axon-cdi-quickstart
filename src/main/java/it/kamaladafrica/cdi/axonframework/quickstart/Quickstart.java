@@ -1,12 +1,13 @@
-package org.axonframework.integration.cdi.quickstart;
+package it.kamaladafrica.cdi.axonframework.quickstart;
 
 import java.util.UUID;
 
 import javax.inject.Inject;
 
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.axonframework.integration.cdi.quickstart.api.CreateToDoItemCommand;
-import org.axonframework.integration.cdi.quickstart.api.MarkCompletedCommand;
+
+import it.kamaladafrica.cdi.axonframework.quickstart.api.CreateToDoItemCommand;
+import it.kamaladafrica.cdi.axonframework.quickstart.api.MarkCompletedCommand;
 
 public class Quickstart {
 

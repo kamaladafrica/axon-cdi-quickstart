@@ -11,25 +11,34 @@
  * limitations under the License.
  */
 
-package org.axonframework.integration.cdi.quickstart.api;
+package it.kamaladafrica.cdi.axonframework.quickstart.api;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 
 /**
- * @author Allard Buijze
+ * Command used to create a new ToDoItem
+ *
+ * @author Jettro Coenradie
  */
-public class MarkToDoItemOverdueCommand {
+public class CreateToDoItemCommand {
 
 	@TargetAggregateIdentifier
 	private final String todoId;
 
-	public MarkToDoItemOverdueCommand(String todoId) {
+	private final String description;
+
+	public CreateToDoItemCommand(String todoId, String description) {
 		this.todoId = todoId;
+		this.description = description;
 	}
 
 	public String getTodoId() {
 		return todoId;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	@Override

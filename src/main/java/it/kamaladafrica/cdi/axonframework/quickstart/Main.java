@@ -1,4 +1,4 @@
-package org.axonframework.integration.cdi.quickstart;
+package it.kamaladafrica.cdi.axonframework.quickstart;
 
 import javax.enterprise.inject.spi.CDI;
 

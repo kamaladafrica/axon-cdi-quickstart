@@ -11,16 +11,22 @@
  * limitations under the License.
  */
 
-package org.axonframework.integration.cdi.quickstart.api;
+package it.kamaladafrica.cdi.axonframework.quickstart.api;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.axonframework.commandhandling.annotation.TargetAggregateIdentifier;
 
 /**
- * @author Allard Buijze
+ * Command used to mark an existing ToDoItem as completed.
+ *
+ * @author Jettro Coenradie
  */
-public class ToDoItemDeadlineExpiredEvent {
+public class MarkCompletedCommand {
 
+	@TargetAggregateIdentifier
 	private final String todoId;
 
-	public ToDoItemDeadlineExpiredEvent(String todoId) {
+	public MarkCompletedCommand(String todoId) {
 		this.todoId = todoId;
 	}
 
@@ -30,6 +36,6 @@ public class ToDoItemDeadlineExpiredEvent {
 
 	@Override
 	public String toString() {
-		return "ToDoItemDeadlineExpiredEvent(" + todoId + ")";
+		return ToStringBuilder.reflectionToString(this);
 	}
 }

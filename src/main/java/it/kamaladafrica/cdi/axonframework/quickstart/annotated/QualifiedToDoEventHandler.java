@@ -11,14 +11,15 @@
  * limitations under the License.
  */
 
-package org.axonframework.integration.cdi.quickstart.annotated;
+package it.kamaladafrica.cdi.axonframework.quickstart.annotated;
 
 import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventhandling.annotation.Timestamp;
-import org.axonframework.integration.cdi.quickstart.Qualified;
-import org.axonframework.integration.cdi.quickstart.api.ToDoItemCompletedEvent;
-import org.axonframework.integration.cdi.quickstart.api.ToDoItemCreatedEvent;
 import org.joda.time.DateTime;
+
+import it.kamaladafrica.cdi.axonframework.quickstart.Qualified;
+import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCompletedEvent;
+import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCreatedEvent;
 
 /**
  * Event handler that listens to both events and prints a message to the system output stream.

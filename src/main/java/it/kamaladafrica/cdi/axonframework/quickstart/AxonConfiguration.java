@@ -1,4 +1,4 @@
-package org.axonframework.integration.cdi.quickstart;
+package it.kamaladafrica.cdi.axonframework.quickstart;
 
 import java.io.File;
 import java.util.concurrent.Executors;
@@ -21,9 +21,10 @@ import org.axonframework.eventsourcing.SnapshotterTrigger;
 import org.axonframework.eventstore.SnapshotEventStore;
 import org.axonframework.eventstore.fs.FileSystemEventStore;
 import org.axonframework.eventstore.fs.SimpleEventFileResolver;
-import org.axonframework.integration.cdi.AutoConfigure;
 import org.axonframework.saga.SagaRepository;
 import org.axonframework.saga.repository.inmemory.InMemorySagaRepository;
+
+import it.kamaladafrica.cdi.axonframework.AutoConfigure;
 
 @ApplicationScoped
 public class AxonConfiguration {
@@ -38,7 +39,6 @@ public class AxonConfiguration {
 	}
 
 	@Produces
-	@AutoConfigure
 	@ApplicationScoped
 	public SnapshotEventStore eventStore() {
 		System.out.println("Storage path: " + storageDir.getAbsolutePath());

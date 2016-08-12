@@ -50,9 +50,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.github.kamaladafrica</groupId>
+			<groupId>it.kamaladafrica</groupId>
 			<artifactId>axon-cdi</artifactId>
-			<version>master</version>
+			<version>1.0</version>
 		</dependency>
 
 		<!-- Axon Dependency -->
@@ -89,16 +89,13 @@
 	</dependencies>
 
 	<repositories>
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-			<name>Jitpack.io Repository</name>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 </project>

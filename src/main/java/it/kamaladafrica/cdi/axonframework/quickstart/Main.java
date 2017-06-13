@@ -1,9 +1,11 @@
 package it.kamaladafrica.cdi.axonframework.quickstart;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.spi.CDI;
 
 import org.apache.deltaspike.cdise.api.CdiContainer;
 import org.apache.deltaspike.cdise.api.CdiContainerLoader;
+import org.apache.deltaspike.cdise.api.ContextControl;
 
 public class Main {
 
@@ -11,6 +13,9 @@ public class Main {
 		final CdiContainer container = CdiContainerLoader.getCdiContainer();
 		try {
 			container.boot();
+
+	        ContextControl contextControl = container.getContextControl();
+	        contextControl.startContext(ApplicationScoped.class);
 
 			Quickstart quickstart = CDI.current().select(Quickstart.class).get();
 			quickstart.run();

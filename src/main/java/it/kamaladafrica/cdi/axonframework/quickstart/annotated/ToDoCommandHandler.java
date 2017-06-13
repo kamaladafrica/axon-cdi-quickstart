@@ -15,8 +15,9 @@ package it.kamaladafrica.cdi.axonframework.quickstart.annotated;
 
 import javax.inject.Inject;
 
-import org.axonframework.commandhandling.annotation.CommandHandler;
-import org.axonframework.repository.Repository;
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.commandhandling.model.Aggregate;
+import org.axonframework.commandhandling.model.Repository;
 
 import it.kamaladafrica.cdi.axonframework.quickstart.api.MarkCompletedCommand;
 import it.kamaladafrica.cdi.axonframework.quickstart.api.MarkToDoItemOverdueCommand;
@@ -32,8 +33,8 @@ public class ToDoCommandHandler {
 	@CommandHandler
 	public void handle(MarkCompletedCommand command) {
 		System.out.println(">> Receiving command: " + command);
-		ToDoItem toDoItem = repository.load(command.getTodoId());
-		toDoItem.markCompleted();
+		Aggregate<ToDoItem> toDoItemAggregate = repository.load(command.getTodoId());
+		toDoItemAggregate.execute(toDoItem -> toDoItem.markCompleted());
 	}
 
 	@CommandHandler

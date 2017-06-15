@@ -13,7 +13,7 @@ import it.kamaladafrica.cdi.axonframework.DefaultQualifierMeme;
 
 
 @Stereotype
-@AggregateConfiguration(value = QualifiedConfiguration.QualifiedQualifierMeme.class, snapshotterTrigger = DefaultQualifierMeme.class)
+@AggregateConfiguration(value = QualifiedConfiguration.QualifiedQualifierMeme.class, snapshotterTriggerDefinition = DefaultQualifierMeme.class)
 @Retention(RUNTIME)
 @Target(TYPE)
 public @interface QualifiedConfiguration {

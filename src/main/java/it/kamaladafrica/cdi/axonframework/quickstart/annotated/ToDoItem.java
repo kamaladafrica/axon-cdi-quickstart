@@ -1,9 +1,10 @@
 package it.kamaladafrica.cdi.axonframework.quickstart.annotated;
 
-import org.axonframework.commandhandling.annotation.CommandHandler;
-import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
-import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
-import org.axonframework.eventsourcing.annotation.EventSourcingHandler;
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.commandhandling.model.AggregateIdentifier;
+import org.axonframework.commandhandling.model.AggregateLifecycle;
+import org.axonframework.commandhandling.model.AggregateRoot;
+import org.axonframework.eventsourcing.EventSourcingHandler;
 
 import it.kamaladafrica.cdi.axonframework.quickstart.api.CreateToDoItemCommand;
 import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCompletedEvent;
@@ -12,9 +13,8 @@ import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCreatedEvent;
 /**
  * @author Jettro Coenradie
  */
-public class ToDoItem extends AbstractAnnotatedAggregateRoot<String> {
-
-	private static final long serialVersionUID = 1L;
+@AggregateRoot
+public class ToDoItem {
 
 	@AggregateIdentifier
 	private String id;
@@ -26,13 +26,13 @@ public class ToDoItem extends AbstractAnnotatedAggregateRoot<String> {
 	public ToDoItem(CreateToDoItemCommand command) {
 		ToDoItemCreatedEvent event = new ToDoItemCreatedEvent(command.getTodoId(), command.getDescription());
 		System.out.println("<< Applying event: " + event);
-		apply(event);
+		AggregateLifecycle.apply(event);
 	}
 
 	public void markCompleted() {
 		ToDoItemCompletedEvent event = new ToDoItemCompletedEvent(id);
 		System.out.println("<< Applying event: " + event);
-		apply(event);
+		AggregateLifecycle.apply(event);
 	}
 
 	@EventSourcingHandler

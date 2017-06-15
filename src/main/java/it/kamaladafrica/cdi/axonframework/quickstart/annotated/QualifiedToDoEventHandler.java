@@ -13,9 +13,10 @@
 
 package it.kamaladafrica.cdi.axonframework.quickstart.annotated;
 
-import org.axonframework.eventhandling.annotation.EventHandler;
-import org.axonframework.eventhandling.annotation.Timestamp;
-import org.joda.time.DateTime;
+import java.time.Instant;
+
+import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.eventhandling.Timestamp;
 
 import it.kamaladafrica.cdi.axonframework.quickstart.Qualified;
 import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCompletedEvent;
@@ -30,12 +31,12 @@ import it.kamaladafrica.cdi.axonframework.quickstart.api.ToDoItemCreatedEvent;
 public class QualifiedToDoEventHandler {
 
 	@EventHandler
-	public void handle(ToDoItemCreatedEvent event, @Timestamp DateTime time) {
+	public void handle(ToDoItemCreatedEvent event, @Timestamp Instant time) {
 		System.out.println(">> Receiving event: " + event);
 		System.out.println(String.format("We've got something qualified to do: %s (%s, created at %s)",
 				event.getDescription(),
 				event.getTodoId(),
-				time.toString("d-M-y H:m")));
+				time.toString()));
 	}
 
 	@EventHandler

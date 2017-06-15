@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>it.kamaladafrica</groupId>
 			<artifactId>axon-cdi</artifactId>
-			<version>3.0.5-1</version>
+			<version>3.0</version>
 		</dependency>
 
 		<!-- Axon Dependency -->
